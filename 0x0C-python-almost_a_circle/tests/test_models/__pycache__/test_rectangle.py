@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Unittest for rectangle.py file
+"""Unittest for the rectangle.py code file
 """
 import unittest
 from models.base import Base
@@ -9,11 +9,13 @@ from io import StringIO
 
 
 class Test_rectangle(unittest.TestCase):
-    """Defines a class to evaluate diferent test cases for rectangle.py file
+    """Defines a new class to evaluate diferent
+    test cases for rectangle.py code file
     """
 
     def test_instance_class(self):
-        """Checks for a instance of the class
+        """Checks for a new instance of the
+        rectangle class
         """
         r1 = Rectangle(10, 2)
         self.assertIsInstance(r1, Rectangle)
@@ -25,7 +27,7 @@ class Test_rectangle(unittest.TestCase):
         self.assertFalse(id(r1) == id(r2))
 
     def test_init_attributes(self):
-        """Checks when id is none
+        """Checks for none id
         """
         r1 = Rectangle(10, 60)
         self.assertEqual(r1.id, 1)
@@ -75,7 +77,7 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(r6.y, 50)
 
     def test_raise_errors(self):
-        """Check for raises errors
+        """Check and raises errors if there is any
         """
         # Checks for diferents instances
         with self.assertRaises(TypeError):
@@ -141,7 +143,8 @@ class Test_rectangle(unittest.TestCase):
             r2.to_dictionary
 
     def test_area(self):
-        """Check area method of rectangle objects
+        """Tests for the area method
+        in the rectangle objects
         """
         r1 = Rectangle(3, 2)
         area = r1.area()
@@ -160,7 +163,7 @@ class Test_rectangle(unittest.TestCase):
         self.assertEqual(area, 25)
 
     def test_display(self):
-        """Checks display method
+        """Tests for the display method
         """
         output_1 = "#\n"
         r1 = Rectangle(1, 1)
@@ -193,7 +196,7 @@ class Test_rectangle(unittest.TestCase):
             self.assertEqual(mock_out.getvalue(), output_5)
 
     def test_str(self):
-        """Checks str method
+        """Tests for string method
         """
         r1 = Rectangle(4, 6, 2, 1, 12)
         self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
@@ -280,6 +283,7 @@ class Test_rectangle(unittest.TestCase):
             os.remove("Square.csv")
         except Exception:
             pass
+
 
 if __name__ == '__main__':
     unittest.main()

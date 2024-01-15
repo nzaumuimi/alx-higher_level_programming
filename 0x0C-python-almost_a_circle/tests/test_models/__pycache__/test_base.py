@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Unittest for base.py file
+"""Unittest file for the base.py code file
 """
 import unittest
 from models.base import Base
@@ -9,10 +9,11 @@ import os
 
 
 class Test_Base(unittest.TestCase):
-    """Defines a class to evaluate diferent test cases for base.py file"""
+    """Defines a new class to evaluate
+    the diferent test cases for base.py code file"""
 
     def test_instance_type_id_class(self):
-        """Checks for a instance of the class
+        """Checks for instances of a new class
         """
         b1 = Base()
         self.assertIsInstance(b1, Base)
@@ -23,7 +24,7 @@ class Test_Base(unittest.TestCase):
         self.assertFalse(id(b1) == id(b2))
 
     def test_none_id(self):
-        """Checks when id is none
+        """Checks for none id
         """
         b1 = Base()
         self.assertEqual(b1.id, 1)
@@ -35,7 +36,7 @@ class Test_Base(unittest.TestCase):
         self.assertEqual(b2.id, 4)
 
     def test_id_value(self):
-        """Checks when id has a integer value
+        """Checks for id with int value
         """
         b1 = Base(12)
         self.assertEqual(b1.id, 12)
@@ -53,7 +54,7 @@ class Test_Base(unittest.TestCase):
         self.assertEqual(b1.id, 30)
 
     def test_object_attributtes(self):
-        """Check for attributes dictionary of a object"""
+        """Check for dictionary attributes of new a object"""
         b1 = Base()
         self.assertEqual(b1.__dict__, {'id': 1})
         b2 = Base()
@@ -62,7 +63,7 @@ class Test_Base(unittest.TestCase):
         self.assertEqual(b3.__dict__, {'id': 100})
 
     def test_raise_errors(self):
-        """Check for raises errors
+        """Check and raises errors
         """
         with self.assertRaises(AttributeError):
             b1 = Base()
@@ -73,7 +74,7 @@ class Test_Base(unittest.TestCase):
             b1.to_dictionary()
 
     def test_JSON_string(self):
-        """Check for JSON_string method
+        """Check for JSON_string method in the code
         """
         r1 = Rectangle(10, 7, 2, 8)
         dictionary = (r1.to_dictionary())
@@ -149,7 +150,6 @@ class Test_Base(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             self.assertEqual(file.read(), '[]')
 
-
     def test_rectangle_save_to_file(self):
         Rectangle.save_to_file([])
         with open("Rectangle.json", "r") as file:
@@ -190,7 +190,7 @@ class Test_Base(unittest.TestCase):
             self.assertEqual(result, '[]')
 
     def test_from_json_string(self):
-        """Checks from_json_string method
+        """Tests for from_json_string method
         """
         list_input = [
                     {'id': 89, 'width': 10, 'height': 4},
@@ -238,7 +238,7 @@ class Test_Base(unittest.TestCase):
         self.assertTrue(type(list_output) == list)
 
     def test_create(self):
-        """Checks create method
+        """Tests for the create method
         """
         # Checks create Rectangle
         r1 = Rectangle(3, 5, 1)
@@ -299,7 +299,7 @@ class Test_Base(unittest.TestCase):
         self.assertFalse(s1 == s2)
 
     def test_load_from_file(self):
-        """Checks for load_from_file
+        """Tests for load_from_file
         """
         # Check for rectangle load from file
         list_rectangles_output = Rectangle.load_from_file()
@@ -387,7 +387,7 @@ class Test_Base(unittest.TestCase):
             self.assertEqual(sum_read, sum_expected)
 
     def test_load_csv(self):
-        """Checks load_csv method
+        """Tests for load_csv method
         """
         list_rectangles_output = Rectangle.load_from_file_csv()
         self.assertEqual(str(list_rectangles_output), "[]")
@@ -417,7 +417,8 @@ class Test_Base(unittest.TestCase):
         self.assertEqual(str(r2), str(list_rectangles_output[1]))
 
     def tearDown(self):
-        """Tear down test method to reset class attribute
+        """Tears down the test method to
+        reset class attribute
         """
         Base._Base__nb_objects = 0
         try:
@@ -436,6 +437,7 @@ class Test_Base(unittest.TestCase):
             os.remove("Square.csv")
         except Exception:
             pass
+
 
 if __name__ == '__main__':
     unittest.main()

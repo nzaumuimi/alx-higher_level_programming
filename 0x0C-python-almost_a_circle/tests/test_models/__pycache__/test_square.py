@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Unittest for square.py file
+"""Unittest for square.py code file
 """
 import unittest
 from models.base import Base
@@ -10,11 +10,12 @@ from io import StringIO
 
 
 class Test_square(unittest.TestCase):
-    """Defines a class to evaluate diferent test cases for square.py file
+    """Defines a new class to evaluate diferent
+    test cases for square.py code file
     """
 
     def test_instance_class(self):
-        """Checks for a instance of the class
+        """Tests for a instance of the square class
         """
         s1 = Square(10)
         self.assertIsInstance(s1, Square)
@@ -29,7 +30,7 @@ class Test_square(unittest.TestCase):
         self.assertFalse(id(s1) == id(s2))
 
     def test_init_attributes(self):
-        """Checks when id is none
+        """Tests for none id
         """
         s1 = Square(10)
         self.assertEqual(s1.id, 1)
@@ -72,7 +73,7 @@ class Test_square(unittest.TestCase):
         self.assertEqual(s6.y, 50)
 
     def test_raise_errors(self):
-        """Check for raises errors
+        """Checks n raises errors if any
         """
         # checks for instances
         with self.assertRaises(TypeError):
@@ -127,7 +128,8 @@ class Test_square(unittest.TestCase):
             s1.update(id=10, x=10, y=20, size="30")
 
     def test_area(self):
-        """Check area method of square objects
+        """Checks for the area method
+        of square objects
         """
         s1 = Square(3, 2)
         area = s1.area()
@@ -150,7 +152,7 @@ class Test_square(unittest.TestCase):
         self.assertEqual(area, 100)
 
     def test_display(self):
-        """Checks display method for square
+        """Tests for display method for square
         """
         output_1 = "#\n"
         s1 = Square(1)
@@ -189,7 +191,7 @@ class Test_square(unittest.TestCase):
             self.assertEqual(mock_out.getvalue(), output_6)
 
     def test_str(self):
-        """Check str method
+        """Tests string method
         """
         s1 = Square(4, 6, 2, 1)
         self.assertEqual(str(s1), "[Square] (1) 6/2 - 4")
@@ -201,7 +203,7 @@ class Test_square(unittest.TestCase):
         self.assertEqual(s4.__str__(), "[Square] (50) 6/2 - 4")
 
     def test_update(self):
-        """Check update method
+        """Tests for the update method
         """
         s1 = Square(5)
         self.assertEqual(s1.__str__(), "[Square] (1) 0/0 - 5")
@@ -227,7 +229,7 @@ class Test_square(unittest.TestCase):
         self.assertEqual(s1.__str__(), "[Square] (50) 10/10 - 10")
 
     def test_dictionary_representation(self):
-        """Check to_dictionary method
+        """Checks for the to_dictionary method
         """
         s1 = Square(10, 2, 1)
         s1_dictionary = s1.to_dictionary()
@@ -250,7 +252,7 @@ class Test_square(unittest.TestCase):
         self.assertEqual(s5_dictionary, {'x': 2, 'y': 5, 'id': 6, 'size': 10})
 
     def tearDown(self):
-        """Tear down test method to reset class attribute
+        """Tears down test method to reset class attribute
         """
         Base._Base__nb_objects = 0
         try:
@@ -269,6 +271,7 @@ class Test_square(unittest.TestCase):
             os.remove("Square.csv")
         except Exception:
             pass
+
 
 if __name__ == '__main__':
     unittest.main()
